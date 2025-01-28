@@ -29,7 +29,7 @@ This is a simple to-do list application built using React, Redux and Tailwind CS
 1.  **Clone the repository:**
 
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/manyamkarthik/Digital_Factory_Frontend.git
     cd frontend  # Or whatever your frontend folder is called
     ```
 
