@@ -46,7 +46,11 @@ const LoginPage = () => {
           navigate('/tasks');
         }
       } catch (err) {
-        setError('Login failed. Please check your credentials and try again.');
+        if (err.response && err.response.data) {
+          setError(err.response.data.message || 'Login failed. Please check your credentials and try again.');
+        } else {
+          setError('Login failed. Please try again later.');
+        }
       }
     }
   };

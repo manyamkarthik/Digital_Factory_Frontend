@@ -12,7 +12,13 @@ export const register = (username, email, password) => async (dispatch) => {
         }
         return false;
     } catch (error) {
-        throw error.response.data.errors;
+        if (error && error.response && error.response.data && error.response.data.errors) {
+            throw error.response.data.errors; // Specific validation errors from the server
+       }  else if (error instanceof Error && error.message) {
+           throw error; // Throw the error if it is an object with message
+       } else {
+         throw new Error("An unknown error occurred");  // Generic Error with message
+       }
     }
 };
 
@@ -26,7 +32,13 @@ export const login = (email, password) => async (dispatch) => {
         }
         return false;
     } catch (error) {
-        throw error.response.data.errors;
+        if (error && error.response && error.response.data && error.response.data.errors) {
+            throw error.response.data.errors; // Specific validation errors from the server
+       }  else if (error instanceof Error && error.message) {
+           throw error; // Throw the error if it is an object with message
+       } else {
+         throw new Error("An unknown error occurred");  // Generic Error with message
+       }
     }
 };
 
